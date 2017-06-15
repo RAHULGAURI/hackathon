@@ -1,0 +1,17 @@
+{
+    "contents" : "\n# This is the server logic for a Shiny web application.\n# You can find out more about building applications with Shiny here:\n#\n# http://shiny.rstudio.com\n#\n\nlibrary(shiny)\nfilename<-\"C:\\\\Users\\\\Mahe\\\\Documents\\\\trigger application\\\\trigger.txt\"\ncon=file(filename,open = \"r+\")\n\nline <- readLines(con,n = 1)\nlines<-\"\"\nclose(con)\nshinyServer(function(input, output) {\n  \n  obs<-1\n  \n  print(obs)\n  \n  \n  \n  output$distPlot <- renderText({\n    invalidateLater(1000,session=getDefaultReactiveDomain())\n   timestampp()\n  })\n \n  \n})\ntimestampp<-function(){\n  \n  changedFiles(snapshot)\n  changedFiles(snapshot)$changes\n  filename<-\"C:\\\\Users\\\\Mahe\\\\Documents\\\\trigger application\\\\trigger.txt\"\n  conn=file(filename,open = \"r+\")\n  \n  lines <- readLines(conn,n = 1)\n  #snapshot <- fileSnapshot(dir, timestamp = tempfile(\"timestamp\"), md5sum=TRUE)\n  \n  if(line == lines){\n    v<-\"NOT CHANGED\"\n    print(v)\n  }\n  else{\n    v<-\"CHANGED\"\n    print(paste(v,lines))\n    baz <- function(){\n      assign(line, lines, envir = .GlobalEnv)\n    }\n    baz()\n  }\n \n  \n  \n  \n  close(conn)\n  v<-paste(v,line,\",\",Sys.time())\n}\n\n\n",
+    "created" : 1497536521231.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1211166090",
+    "id" : "C8714643",
+    "lastKnownWriteTime" : 1497547263,
+    "path" : "~/trigger application/server.R",
+    "project_path" : "server.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

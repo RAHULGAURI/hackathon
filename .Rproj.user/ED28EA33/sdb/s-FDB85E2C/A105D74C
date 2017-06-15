@@ -1,0 +1,18 @@
+{
+    "contents" : "\nf<-function(){\n  \n  filename<-\"C:\\\\Users\\\\Mahe\\\\Documents\\\\trigger application\\\\trigger.txt\"\n  con=file(filename,open = \"r\")\n  \n  line <- readLines(con,n = 1)\n \n}\nlines <- \"yo\"\n\nif(line == lines){\n  print(\"true\")\n}else{\n  print(\"false\")\n}",
+    "created" : 1497540676665.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2876743470",
+    "id" : "A105D74C",
+    "lastKnownWriteTime" : 1497544572,
+    "path" : "~/trigger application/sample.R",
+    "project_path" : "sample.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
