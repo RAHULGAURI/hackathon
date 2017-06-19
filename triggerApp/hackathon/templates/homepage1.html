@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+	   <meta charset="utf-8">
+
+	<title>Stock Ticker</title>
+	<style type="text/css">
+		h1,h3,h2{
+    		text-align: center;
+    	}
+    	h1{
+    		font-size: 45px;
+    	}
+
+    	input[type=text] {
+    		margin: 0 auto;s
+		    width: 130px;
+		    box-sizing: border-box;
+		    border: 2px solid #ccc;
+		    border-radius: 4px;
+		    font-size: 16px;
+		    background-color: white;
+		    background-image: url('searchicon.png');
+		    background-position: 10px 10px; 
+		    background-repeat: no-repeat;
+		    padding: 12px 20px 12px 40px;
+		    -webkit-transition: width 0.4s ease-in-out;
+		    transition: width 0.4s ease-in-out;
+		}
+
+		input[type=text]:focus {
+
+		    width: 60%;
+		}
+		body {margin:0;
+				background-color: #c9efe6;}
+		ul {
+		    list-style-type: none;
+		    margin: 0;
+		    padding: 0;
+		    overflow: hidden;
+		    background-color: #333;
+		}
+
+		li {
+		    float: left;
+		}
+
+		li a {
+			float: left;
+		    display: inline-block;
+		    color: white;
+		    text-align: center;
+		    padding: 15px 16px;
+		    text-decoration: none;
+		}
+
+		li a:hover {
+		    background-color: gray;
+		}
+		#name{
+			 padding: 15px 16px;
+			  display: inline-block;
+			  color: white;
+			  font-size: 20px;
+		}
+
+		#sample{
+			align-self: center;
+			
+		}
+		img{
+			display: block;
+   		 	margin: auto;    		
+		}
+		div{
+			background-color:  white;
+			width: 100px;
+			height: 300px;
+			position: absolute;
+			top: 20%;
+			bottom: 80%;
+			left: 0;
+			right: 0;
+			margin: auto;
+		}
+		#content{
+			top: 70%;
+
+		}
+		.floating-box 
+		{padding: 35px 45px 0;  
+			vertical-align: middle;
+    		float: left;
+    		width: 220px;
+   			height: 70px;
+    		margin: 10px;
+    		border: 3px solid black; 
+    		text-align: center; 
+    		font-size: 20px;
+			}
+		form{
+			float: center;
+		}
+		#check{
+			align-content: center;
+			top:150%;
+			bottom: 20%;
+			background-color: #d0d3d8;
+			width: 450px;
+		}
+		fieldset{
+			border: 2px solid gray;
+			background-color: #e0ebeb;
+			align-content: center;
+		}
+		
+	</style>
+	
+</head>
+<body>
+	<ul>
+	<li id="name" style="font-family: Arial"> <b>StockWiz</b></li>
+	<li><a href="#Home">Home</a></li>
+ 	<li><a href="screens.html">Screens</a></li>
+</ul>
+
+
+	<br>
+
+	<!--<div id="sample" style="display: inline-block; width: 700px; margin:0 auto">-->
+		<img src="ex1.png" height="150" width="200">
+
+		<h1 style="font-family: Arial ">StockWiz</h1>
+		<h3>Near Real-time Stock ticker</h3>
+	<h2>StockWiz is a stock analysis and screening tool to see information of listed companies in a customizable way.</h2>
+	<br>
+
+	
+	<h3>Search stocks</h3>
+	<h3>
+
+	    
+
+
+	</script>
+	
+	</h3>
+	<form method="POST" action="write.php">
+	<fieldset style="align-items: center; margin-left: 30%; width: 500px;">
+	<input type="checkbox" id="Company1" value="Google" name="check_list[]"><label for="company1"> Google</label> 
+	<input type="checkbox" id="Company2" value="StarBucks" name="check_list[]"><label for="Company2"> StarBucks</label> 
+	<input type="checkbox" id="Company3" value="Yahoo" name="check_list[]"><label for="Company3"> Yahoo</label> 
+	<input type="checkbox" id="Company4" value="Exxon" name="check_list[]"><label for="Company4"> Exxon</label> 
+	<input type="checkbox" id="Company5" value="Apple" name="check_list[]"><label for="Company5"> Apple</label>
+	<input type="checkbox" id="Company6" value="Phillips" name="check_list[]"><label for="Company6"> Phillips</label> 
+	</fieldset>
+	<br>
+	<input type="Submit" id="b1" name="Submit"  value="Submit" style="margin-left: 45%;">
+	</form>
+	
+
+	View Stocks of:<br>
+	<input type="Submit" id="c1" name="Google" value="Google" onClick="document.location.href='GoogleStocks.html'">
+	<input type="Submit" id="c1" name="StarBucks" value="StarBucks" onClick="document.location.href='SBXStocks.html'">
+	<input type="Submit" id="c1" name="Yahoo" value="Yahoo" onClick="document.location.href='YAHOOStocks.html'">
+	<input type="Submit" id="c1" name="Exxon" value="Exxon" onClick="document.location.href='EXXONStocks.html'">
+	<input type="Submit" id="c1" name="Apple" value="Apple" onClick="document.location.href='APPLEStocks.html'">
+	<input type="Submit" id="c1" name="Philips" value="Philips" onClick="document.location.href='PhilipsStocks.html'">
+	<br>Enter company names:<br>
+	<form method="POST" action="triggerwrite.php">
+	<textarea rows="3" name="textarea" cols="50">
+	</textarea>
+<input type="Submit" onClick="document.location.href='GoogleStocks.html'">
+	</form>
+
+
+	  <!-- <script type="text/javascript"> -->
+	    <!-- document.getElementById("b1").onclick = function () { -->
+	        <!-- location.href = "http://localhost:5000/uploaders"; -->
+	    <!-- }; -->
+<!-- </script> -->
+<script type="text/javascript">
+  // bind click event to button
+//  $('#b1').click(function() {
+    // send ajax request to save.php (using POST method)
+//    $.post('write.php', { text: "NEWFILE.txt", function(data) { 
+      // output response to console
+//      console.log(data); 
+//    });
+//  });
+ </script>
+<!--<input type="button" id="button1" name="Submit" onClick="http://localhost:5000/uploaders" value="SubmitNew" style="margin-left: 45%;">
+<script language="javascript">
+		function WriteToFile()
+		{
+		var fso = new ActiveXObject("Scripting.FileSystemObject");
+		var s = fso.CreateTextFile("C:\\NewFile.txt", true);
+		var text=document.getElementById("button1").innerText;
+		s.WriteLine(text);
+		s.Close();
+		}
+	</script>-->
+	
+</body>
+</html>
+
+
+
+<script type="text/javascript">
+  // bind click event to button
+  <!-- $('#b1').click(function() { -->
+    <!-- // send ajax request to save.php (using POST method) -->
+    <!-- $.post('write.php', { text: "NEWFILE.txt", function(data) {  -->
+      <!-- // output response to console -->
+      <!-- console.log(data);  -->
+    <!-- }); -->
+  <!-- }); -->
+  </script>
+
+
+</div>
+
+	
+<!--<span id="tradingview-copyright"><a ref="nofollow" target="_blank" href="http://in.tradingview.com" style="color: rgb(173, 174, 176); font-family: &quot;Trebuchet MS&quot;, Tahoma, Arial, sans-serif; font-size: 13px;"></a></span>
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js">{
+  "symbols": [
+    {
+      "proName": "INDEX:SPX",
+      "title": "S&P 500"
+    },
+    {
+      "proName": "INDEX:IUXX",
+      "title": "Nasdaq 100"
+    },
+    {
+      "proName": "FX_IDC:EURUSD",
+      "title": "EUR/USD"
+    },
+    {
+      "proName": "NYMEX:CL1!",
+      "title": "Crude Oil"
+    },
+    {
+      "proName": "FX_IDC:XAUUSD",
+      "title": "Gold"
+    }
+  ],
+  "locale": "in"
+}</script>
+<!-- TradingView Widget END -->
+<!--<div id="check">
+<fieldset>
+	<input type="checkbox" id="Company1" value="Company1" name="langs"><label for="company1"> Google</label> <input type="checkbox" id="Company2" value="Company2" name="langs"><label for="Company2"> Wipro</label> <input type="checkbox" id="Company3" value="Company3" name="langs"><label for="Company3"> Yahoo</label> 
+	</fieldset>
+
+</div>-->
+	
+	
+	
+</body>
+</html>
+   
