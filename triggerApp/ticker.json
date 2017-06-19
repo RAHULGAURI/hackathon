@@ -2,17 +2,16 @@
 {"company_name":"Honeywell","ticker":"HON","market":"NYSE"},
 {"company_name":"Microsoft","ticker":"MSFT","market":"NASDAQ"},
 {"company_name":"Facebook","ticker":"FB","market":"NASDAQ"},
-{"company_name":"Apple","ticker":"FB","market":"NASDAQ"},
+{"company_name":"Apple","ticker":"AAPL","market":"NASDAQ"},
 {"company_name":"Citrix","ticker":"CTXS","market":"NASDAQ"},
 {"company_name":"Twitter","ticker":"TWTR","market":"NASDAQ"},
 {"company_name":"Cisco","ticker":"CSCO","market":"NASDAQ"},
 {"company_name":"Amazon","ticker":"AMZN","market":"NASDAQ"},
 {"company_name":"HP Inc","ticker":"HPQ","market":"NYSE"},
-{"company_name":"Philips","ticker":"PHIA","market":"AMS"},
-{"company_name":"Wipro Limited","ticker":"WIPRO","market":"NSE"},
+{"company_name":"Philips","ticker":"PHG","market":"AMS"},
 {"company_name":"Accentute","ticker":"ACN","market":"NYSE"},
 {"company_name":"Intellect Design Arena Ltd","ticker":"INTELLECT","market":"NSE"},
 {"company_name":"Yahoo","ticker":"YHOO","market":"NASDAQ"},
 {"company_name":"Google","ticker":"GOOG","market":"NASDAQ"},
-{"company_name":"Wipro","ticker":"WIPRO.NS","market":"NSE"}
+{"company_name":"StarBucks","ticker":"SBUX","market":"NASDAQ"}
 ]

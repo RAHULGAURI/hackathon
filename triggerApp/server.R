@@ -6,7 +6,7 @@
 #
 
 library(shiny)
-filename<-"D:\\Users\\H223838\\Documents\\triggerApp\\trigger.txt"
+filename<-"C:\\wamp64\\www\\hackathon\\trigger.txt"
 connn<-file(filename,open = "r")
 
 line <- readLines(connn,n = 1)
@@ -15,23 +15,18 @@ v<-""
 close(connn)
 
 shinyServer(function(input, output) {
-  
-  
-  
   output$distPlot <- renderText({
     invalidateLater(1000,session=getDefaultReactiveDomain())
     timestampp()
   })
-  
-  
 })
 
 
 timestampp<-function(){
   
-  print(showConnections(all = FALSE))
+  #print(showConnections(all = FALSE))
   closeAllConnections()
-  filename<-"D:\\Users\\H223838\\Documents\\triggerApp\\trigger.txt"
+  filename<-"C:\\wamp64\\www\\hackathon\\trigger.txt"
   conn<-file(filename,open = "r")
   
   liness <- readLines(conn,n = 1)
@@ -39,6 +34,7 @@ timestampp<-function(){
   close(conn)
   if(line == liness){
     v1<-"NOT CHANGED"
+    closeAllConnections()
     v<<-v1
     print(paste(v1,line))
     v<-paste(v1,line,",",Sys.time())
@@ -52,22 +48,14 @@ timestampp<-function(){
     line<<-liness
     beforesleepfunc()
     
-    Sys.sleep(15);
+    Sys.sleep(5);
     
     aftersleepfunc()
     #baz <- function(){
     #  assign(line, lines, envir = .GlobalEnv)
     #}
     #baz()
-    
   }
-  
-  
-  
-  
-  
-  
-  
 }
 
 beforesleepfunc<-function(){
@@ -76,15 +64,20 @@ beforesleepfunc<-function(){
   library("quantmod")
   library("ggplot2")
   library(jsonlite)
-    filename<-"D:\\Users\\H223838\\Documents\\triggerApp\\trigger.txt"
+    filename<-"C:\\wamp64\\www\\hackathon\\trigger.txt"
     
     con<-file(filename,open = "r")
     readit<-readLines(con,n = 1)
     readit
     close(con)
     
+    ticker<-read.csv("C:\\wamp64\\www\\hackathon\\ticker.csv")
+    for(i in ticker$COMPANY){
+      tickeread<-ticker[which(ticker[,"COMPANY"] == readit),]
+    }
+    tickeread<-as.character(tickeread$TICKER)
     
-    from.dat <- as.Date("01/01/16", format="%m/%d/%y") 
+    from.dat <- as.Date("01/01/08", format="%m/%d/%y") 
     to.dat <- as.Date("06/30/17", format="%m/%d/%y") 
     from1.dat <- as.Date("05/01/17", format="%m/%d/%y") 
     to1.dat <- as.Date(Sys.Date(), format="%y-%m-%d") 
@@ -94,7 +87,7 @@ beforesleepfunc<-function(){
     #getSymbols("GOOG",from = "2010-01-01")
     print(prefernceqoutes)
     preferncejson<-toJSON(prefernceqoutes,pretty = TRUE)
-    write(preferncejson,"~/CompanyPreference.json")
+    write(preferncejson,"C:\\wamp64\\www\\hackathon\\CompanyPreference.json")
     
     
     #quoteconec<-file("D:\\Users\\H223838\\Documents\\triggerApp\\preferencecom.txt",open = "r")    
@@ -109,18 +102,21 @@ beforesleepfunc<-function(){
     #getSymbols("GOOG",from = "2010-01-01")
     
     #getSymbols.yahoo(readit,from="2007-01-01",to="2009-01-02",env=details,verbose=TRUE,return.class = 'xts',auto.assign = T)
-    getSymbols(readit, src="yahoo", from = from.dat, to = to.dat)
-    g<-get(readit)
-    getSymbols(readit, src="yahoo", from = from1.dat, to = to1.dat)
-    g1<-get(readit)
+    getSymbols(tickeread, src="yahoo", from = from.dat, to = to.dat)
+    g<-get(tickeread)
+    getSymbols(tickeread, src="yahoo", from = from1.dat, to = to1.dat)
+    g1<-get(tickeread)
     
     
     yeardata<-processing(g,1)
+    write.csv(yeardata,"C:\\wamp64\\www\\hackathon\\yearwisedata.csv",row.names = FALSE)
     yeardata<-toJSON(yeardata,pretty = TRUE)
-    write(yeardata,"~/yeardata.json")
+    write(yeardata,"C:\\wamp64\\www\\hackathon\\yeardata.json")
     monthdata<-processing(g1,2)
+    write.csv(monthdata,"C:\\wamp64\\www\\hackathon\\monthdata.csv",row.names = FALSE)
     monthdata<-toJSON(monthdata,pretty = TRUE)
-    write(monthdata,"~/monthdata.json")
+    write(monthdata,"C:\\wamp64\\www\\hackathon\\monthdata.json")
+    
 }    
     #----------------------
     #creating data to be used
@@ -194,7 +190,7 @@ processing<-function(g,value){
         print("-------------------")
         writeLines("\n")
         print(intermdata)
-        write.csv(intermdata,"~/sharesintermdata.csv")
+        write.csv(intermdata,"~/sharesintermdata.csv",row.names = TRUE)
         #print(intermdata[,"month"])
         #print(intermdata[,"averageopenvalue"])
         #x<-factor(intermdata[,"month"],levels=unique(intermdata[,"month"]))
@@ -211,12 +207,12 @@ processing<-function(g,value){
         yearwisedata[l,] <- c(i,meanopenprice,meancloseprice)
         writeLines(paste("AVERAGE OPEN PRICE FOR THE YEAR-----",mean(as.numeric(intermdata[,"averageopenvalue"]),na.rm = TRUE)))
         writeLines(paste("AVERAGE CLOSE PRICE FOR THE YEAR-----",mean(as.numeric(intermdata[,"averageclosevalue"]),na.rm = TRUE)))
-        readline(prompt = "do you want to continue:")
+        #readline(prompt = "do you want to continue:")
         k<-1
         xval<-0
       }
       l<-l+1
-      write.csv(yearwisedata,"~/yearwisedata.csv")
+      #write.csv(yearwisedata,"C:\\wamp64\\www\\hackathon\\yearwisedata.csv")
     }
     return(yearwisedata)
     }
@@ -229,7 +225,7 @@ processing<-function(g,value){
         return(interm)
       }  
     }
-    }
+}
     
   
 
@@ -239,16 +235,23 @@ aftersleepfunc<-function(){
 
 
 processFile = function() {
-  con = file("D:\\Users\\H223838\\Documents\\triggerApp\\preferencecom.txt", "r")
+  con = file("C:\\wamp64\\www\\hackathon\\preferencecom.txt", "r")
   index<-1
-  len<-length(count.fields("D:\\Users\\H223838\\Documents\\triggerApp\\preferencecom.txt",sep = "\n"))
+  len<-length(count.fields("C:\\wamp64\\www\\hackathon\\preferencecom.txt",sep = "\n"))
   processprefdata<-matrix(nrow=len,ncol=6)
   while ( TRUE ) {
     line = readLines(con, n = 1)
     if ( length(line) == 0 ) {
       break
     }
-    t<-getQuote(line,src = "yahoo")
+    
+    
+    ticker<-read.csv("C:\\wamp64\\www\\hackathon\\ticker.csv")
+    for(i in ticker$COMPANY){
+      tickeread<-ticker[which(ticker[,"COMPANY"] == line),]
+    }
+    tickeread<-as.character(tickeread$TICKER)
+    t<-getQuote(tickeread,src = "yahoo")
     #print(line)
     print(t)
     openvalue<-as.vector(t[,5])
@@ -262,7 +265,8 @@ processFile = function() {
     }
     
   }
-  return(processprefdata)
+  print(processprefdata)
+  #return(processprefdata)
   #print(processprefdata)
   close(con)
 }
